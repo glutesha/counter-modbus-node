@@ -38,7 +38,7 @@ MB_DEF_QUANTITY = 1
 MB_DEF_START_OFFS = 0x0001
 MB_DEF_REQ_TOUT = 5.0
 
-MB_LOGGING_PATH = '.'
+MB_LOGGING_PATH = ''
 
 # The constructed packets for self testing
 
