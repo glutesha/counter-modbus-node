@@ -6,6 +6,6 @@
 #include "config.h"
 
 esp_err_t http_event_handler(esp_http_client_event_t *evt);
-void send_request(const double volts, const double current, const double power);
+void send_request(double volts, double current, double power);
 
 #endif //COUNTER_MODBUS_NODE_HTTP_H

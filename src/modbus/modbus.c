@@ -96,7 +96,7 @@ void modbus_read_master_task(void *arg) {
           uint16_t value = *(uint16_t*)data_buf;
           double correct = value;
 
-          if (cid == 0) correct /=  10.0;
+          if (cid == 0) correct /= 10.0;
           if (cid == 1) correct /= 100.0;
 
           vals[cid] = correct;
