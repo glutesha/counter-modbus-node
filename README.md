@@ -6,6 +6,7 @@ Nothing special over here, just connect the MAX485 module to UART1 pins of XIAO 
 
 ![Diagram](diagram.png)
 ## Configure, build, upload
+First of all, clone the project properly using ```git clone https://github.com/glutesha/counter-modbus-node --recursive```.    
 To configure the project, rename the ```secrets-template.h``` file to ```secrets.h``` and put in your wifi credentials and server hostname. You can also configure your hardware preferences in the ```config.h``` file.    
 To build and upload the project, install [PlatformIO](https://platformio.org/) and run ```pio run -t upload``` in the project folder.
 ## But why upload this to github, if the project it depends on is currently in development?
