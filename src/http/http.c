@@ -35,7 +35,7 @@ void send_request(const double volts, const double current, const double power) 
     esp_http_client_config_t config = {
         .host = HTTP_ENDPOINT_HOSTNAME,
         .port = HTTP_ENDPOINT_PORT,
-        .path = "/create_point",
+        .path = HTTP_ENDPOINT_PATH,
         .method = HTTP_METHOD_POST,
         .event_handler = http_event_handler,
     };
