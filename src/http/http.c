@@ -1,6 +1,7 @@
 #include "http.h"
 
 static const char *TAG = "NODE_HTTP";
+static char full_path[sizeof(HTTP_ENDPOINT_PATH) + 32];
 
 esp_err_t http_event_handler(esp_http_client_event_t *evt) {
     static char *output_buffer;
@@ -32,10 +33,12 @@ esp_err_t http_event_handler(esp_http_client_event_t *evt) {
 }
 
 void send_request(const double volts, const double current, const double power) {
+    snprintf(full_path, sizeof(full_path), "%s/%s", HTTP_ENDPOINT_PATH, SECRETS_HOME_ID);
+
     esp_http_client_config_t config = {
         .host = HTTP_ENDPOINT_HOSTNAME,
         .port = HTTP_ENDPOINT_PORT,
-        .path = HTTP_ENDPOINT_PATH,
+        .path = full_path,
         .method = HTTP_METHOD_POST,
         .event_handler = http_event_handler,
     };
@@ -43,10 +46,10 @@ void send_request(const double volts, const double current, const double power) 
     esp_http_client_handle_t client = esp_http_client_init(&config);
 
     const double resistance = (current == 0.0) ? 0.0 : volts / current;
+
     char result[200];
     snprintf(result, sizeof(result),
-         "{ \"home_num\": \"%s\", \"volts\": %.2f, \"ampers\": %.2f, \"power\": %.2f, \"resistans\": %.2f }",
-         HOME_NAME, volts, current, power, resistance);
+         "{ \"volts\": %.2f, \"ampers\": %.2f, \"power\": %.2f, \"resistans\": %.2f }", volts, current, power, resistance);
 
     ESP_LOGE(TAG, "Sending data: %s", result);
     esp_http_client_set_header(client, "Content-Type", "application/json");
