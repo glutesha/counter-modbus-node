@@ -49,7 +49,7 @@ void send_request(const double volts, const double current, const double power) 
 
     char result[200];
     snprintf(result, sizeof(result),
-         "{ \"volts\": %.2f, \"ampers\": %.2f, \"power\": %.2f, \"resistans\": %.2f }", volts, current, power, resistance);
+         "{ \"volts\": %.2f, \"ampers\": %.2f, \"power\": %.2f, \"resistance\": %.2f }", volts, current, power, resistance);
 
     ESP_LOGE(TAG, "Sending data: %s", result);
     esp_http_client_set_header(client, "Content-Type", "application/json");
