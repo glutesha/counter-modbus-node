@@ -15,6 +15,7 @@
 #define MAX_HTTP_OUTPUT_BUFFER 1024
 
 #define MB_UART_PORT    UART_NUM_1
+#define MB_RTS_PIN 4
 #define MB_BAUD_RATE    9600
 #define MB_SLAVE_ADDR   1
 
