@@ -64,7 +64,8 @@ void wifi_init_sta(void) {
         .sta = {
             .ssid = ESP_WIFI_SSID,
             .password = ESP_WIFI_PASS,
-            .scan_method = WIFI_FAST_SCAN,
+            .scan_method = WIFI_ALL_CHANNEL_SCAN,
+            .threshold.authmode = WIFI_AUTH_WPA_PSK,
         },
     };
 
