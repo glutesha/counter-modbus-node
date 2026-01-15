@@ -96,8 +96,8 @@ void modbus_read_master_task(void *arg) {
         const mb_parameter_descriptor_t *param_info = NULL;
         esp_err_t err = mbc_master_get_cid_info(mbc_ctx, cid, &param_info);
         if (err == ESP_OK && param_info != NULL) {
-          int data_buf[8];
-          int type = 0;
+          uint8_t data_buf[8];
+          uint8_t type = 0;
           err = mbc_master_get_parameter(mbc_ctx, param_info->cid, data_buf, &type);
           if (err == ESP_OK) {
             if (!get_correct) {get_correct = true;}
