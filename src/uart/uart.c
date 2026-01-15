@@ -10,5 +10,5 @@ void uart_init(void) {
         .source_clk = UART_SCLK_DEFAULT
     };
     ESP_ERROR_CHECK(uart_param_config(MB_UART_PORT, &uart_config));
-    ESP_ERROR_CHECK(uart_set_pin(MB_UART_PORT, 10, 9, MB_RTS_PIN, UART_PIN_NO_CHANGE));
+    ESP_ERROR_CHECK(uart_set_pin(MB_UART_PORT, MB_UART_TX, MB_UART_RX, MB_RTS_PIN, UART_PIN_NO_CHANGE));
 }
